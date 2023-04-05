@@ -1,0 +1,23 @@
+.page {
+  position: relative;
+  height: calc(100vh - 64px);
+  width: 100%;
+  background-image: url("/src/assets/dev-bg.jpg");
+  z-index: 10;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page h3{
+  font-size: 3rem;
+}
+
+.bg {
+  width: 100%;
+  height: calc(100vh - 64px);
+  position: absolute;
+  top: 64px;
+  left: 0;
+}

@@ -1,7 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './componenti/home/home.component';
+import { NotfoundComponent } from './componenti/notfound/notfound.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: "", pathMatch: "full", redirectTo: "/homepage" },
+  { path: "homepage", component: HomeComponent },
+
+
+
+
+  { path: "404", component: NotfoundComponent },
+
+  // inserire questo path sempre per ultimo
+  { path: "**", redirectTo: "/404" }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

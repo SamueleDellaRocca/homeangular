@@ -8,13 +8,16 @@ import { PersoneService } from '../service/persone.service';
 })
 export class DialogComponent implements OnInit {
 
-  persone!: any[];
-
+  public persone!: any[];
   constructor(private servicePersone: PersoneService) { }
 
   ngOnInit(): void {
     this.persone = this.servicePersone.prendiPersone();
     console.log(this.persone);
+  }
+
+  chudistampa(index: number) {
+    console.log(this.persone[index]);
   }
 
 }

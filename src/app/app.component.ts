@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { DialogComponent } from './dialog/dialog.component';
 
@@ -7,10 +7,14 @@ import { DialogComponent } from './dialog/dialog.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'homeangular';
 
   constructor(public dialog: MatDialog) { }
+
+  ngOnInit(): void {
+
+  }
 
   opendialog() {
     this.dialog.open(DialogComponent)

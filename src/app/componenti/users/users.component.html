@@ -1,7 +1,12 @@
 <div class="container">
-  <app-card *ngFor="let persona of persone"
+  <h1>al click di un numero, sotto apparirà la rotta figlia con i dati</h1>
+</div>
+<div class="container">
+  <app-card *ngFor="let persona of persone, index as index"
   [nome]="persona.nome"
   [cognome]="persona.cognome"
   [isOnline]="persona.isOnline"
-  [color]="persona.color"></app-card>
+  [color]="persona.color"
+  [index]="index"></app-card>
+  <router-outlet></router-outlet>
 </div>

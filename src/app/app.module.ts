@@ -13,6 +13,7 @@ import { UsersComponent } from './componenti/users/users.component';
 import { CardComponent } from './componenti/card/card.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { UserComponent } from './componenti/user/user.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { MatButtonModule } from '@angular/material/button';
     HomeComponent,
     NotfoundComponent,
     UsersComponent,
-    CardComponent
+    CardComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

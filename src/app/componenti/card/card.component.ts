@@ -10,4 +10,5 @@ export class CardComponent {
   @Input() cognome: any
   @Input() isOnline: any
   @Input() color: any
+  @Input() index: number | undefined
 }

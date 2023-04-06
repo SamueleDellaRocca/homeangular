@@ -20,4 +20,8 @@ export class DialogComponent implements OnInit {
     console.log(this.persone[index]);
   }
 
+  trovaIndex(persona: object) {
+    return this.persone.indexOf(persona);
+  }
+
 }

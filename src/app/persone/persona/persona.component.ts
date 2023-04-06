@@ -12,6 +12,7 @@ export class PersonaComponent implements OnInit {
 
   constructor() { }
 
+  // ALL'INIT DEL COMPONENTE LANCIO LA FUNZIONE PASSANDO COME PARAMETRO L'ISTANZA DELL'OGGETTO PERSONA
   ngOnInit(): void {
     this.calcoloAnni(this.samuele);
   }

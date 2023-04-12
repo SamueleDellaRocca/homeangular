@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
@@ -7,7 +9,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'homeangular';
-
 
   persone = [
     { nome: "Mauro", cognome: "Rossi", isOnline: false, color: "green" },
@@ -30,6 +31,11 @@ export class AppComponent {
       oggetto[array[0]] = array[1]
     }
     console.log(arrOggetti)
+  }
+
+
+  onSubmit(form: NgForm) {
+    console.log(form);
   }
 
 

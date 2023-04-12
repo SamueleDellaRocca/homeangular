@@ -1,1 +1,73 @@
-<h1>HOME ANGULAR</h1>
+<form #homeform="ngForm" (ngSubmit)="onSubmit(homeform)">
+  <mat-form-field class="larghezza" appearance="fill">
+    <mat-label>Nome</mat-label>
+    <input matInput required type="text" ngModel name="nome" />
+  </mat-form-field>
+
+  <mat-form-field class="larghezza" appearance="fill">
+    <mat-label>Cognome</mat-label>
+    <input matInput required type="text" ngModel name="cognome" />
+  </mat-form-field>
+
+  <mat-form-field class="larghezza" appearance="fill">
+    <mat-label>Codice Fiscale</mat-label>
+    <input matInput required type="text" ngModel name="codicefiscale" />
+  </mat-form-field>
+
+  <mat-form-field class="larghezza" appearance="fill">
+    <mat-label>Data di Nascita</mat-label>
+    <input
+      matInput
+      required
+      [matDatepicker]="datepicker"
+      ngModel
+      name="datanascita"
+    />
+    <mat-datepicker-toggle
+      matIconSuffix
+      [for]="datepicker"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #datepicker>
+      <mat-datepicker-actions>
+        <button mat-button matDatepickerCancel>Cancel</button>
+        <button mat-raised-button color="primary" matDatepickerApply>
+          Apply
+        </button>
+      </mat-datepicker-actions>
+    </mat-datepicker>
+  </mat-form-field>
+
+  <!-- <mat-form-field class="larghezza" appearance="fill">
+    <mat-label>Data di Decesso</mat-label>
+    <input matInput required [matDatepicker]="datepicker" ngModel name="datadecesso" />
+    <mat-datepicker-toggle
+      matIconSuffix
+      [for]="datepicker"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #datepicker>
+      <mat-datepicker-actions>
+        <button mat-button matDatepickerCancel>Cancel</button>
+        <button mat-raised-button color="primary" matDatepickerApply>
+          Apply
+        </button>
+      </mat-datepicker-actions>
+    </mat-datepicker>
+  </mat-form-field> -->
+
+  <mat-form-field class="larghezza" appearance="fill">
+    <mat-label>Sesso</mat-label>
+    <mat-select required ngModel name="sesso">
+      <mat-option value="M">M</mat-option>
+      <mat-option value="F">F</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button
+    mat-raised-button
+    color="primary"
+    type="submit"
+    [disabled]="!homeform.valid"
+  >
+    Invia/Salva
+  </button>
+</form>

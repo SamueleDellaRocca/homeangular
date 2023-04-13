@@ -1,4 +1,4 @@
-<form #homeform="ngForm" (ngSubmit)="onSubmit(homeform)">
+<!-- <form #homeform="ngForm" (ngSubmit)="onSubmit(homeform)">
   <mat-form-field class="larghezza" appearance="fill">
     <mat-label>Nome</mat-label>
     <input matInput required type="text" ngModel name="nome" />
@@ -37,9 +37,15 @@
     </mat-datepicker>
   </mat-form-field>
 
-  <!-- <mat-form-field class="larghezza" appearance="fill">
+  <mat-form-field class="larghezza" appearance="fill">
     <mat-label>Data di Decesso</mat-label>
-    <input matInput required [matDatepicker]="datepicker" ngModel name="datadecesso" />
+    <input
+      matInput
+      required
+      [matDatepicker]="datepicker"
+      ngModel
+      name="datadecesso"
+    />
     <mat-datepicker-toggle
       matIconSuffix
       [for]="datepicker"
@@ -52,7 +58,7 @@
         </button>
       </mat-datepicker-actions>
     </mat-datepicker>
-  </mat-form-field> -->
+  </mat-form-field>
 
   <mat-form-field class="larghezza" appearance="fill">
     <mat-label>Sesso</mat-label>
@@ -68,6 +74,76 @@
     type="submit"
     [disabled]="!homeform.valid"
   >
+    Invia/Salva
+  </button>
+</form> -->
+
+<form [formGroup]="homeform" (ngSubmit)="onSubmit()">
+  <mat-form-field class="larghezza" appearance="fill">
+    <mat-label>Nome</mat-label>
+    <input matInput required type="text" name="nome" formControlName="nome" />
+  </mat-form-field>
+  <p *ngIf="!homeform.get('nome')!.valid && homeform.get('nome')!.touched">
+    Inserisci un nome di sole lettere
+  </p>
+
+  <mat-form-field class="larghezza" appearance="fill">
+    <mat-label>Cognome</mat-label>
+    <input matInput required type="text" name="cognome" formControlName="cognome" />
+  </mat-form-field>
+  <p *ngIf="!homeform.get('cognome')!.valid && homeform.get('cognome')!.touched">
+    Inserisci un cognome di sole lettere
+  </p>
+
+  <mat-form-field class="larghezza" appearance="fill">
+    <mat-label>Codice Fiscale</mat-label>
+    <input matInput required type="text" name="codicefiscale" formControlName="codiceFiscale" />
+  </mat-form-field>
+  <p *ngIf="
+      !homeform.get('codiceFiscale')!.valid &&
+      homeform.get('codiceFiscale')!.touched
+    ">
+    Inserisci un codice fiscale valido
+  </p>
+
+  <mat-form-field class="larghezza" appearance="fill">
+    <mat-label>Data di Nascita</mat-label>
+    <input matInput required [matDatepicker]="datepicker" [max]="maxDate" name="datanascita"
+      formControlName="dataNascita" />
+    <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+    <mat-datepicker #datepicker>
+      <mat-datepicker-actions>
+        <button mat-button matDatepickerCancel>Cancel</button>
+        <button mat-raised-button color="primary" matDatepickerApply>
+          Apply
+        </button>
+      </mat-datepicker-actions>
+    </mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="larghezza" appearance="fill">
+    <mat-label>Data di Decesso</mat-label>
+    <input matInput [matDatepicker]="datepicker2" [min]="minDate" name="datadecesso" formControlName="dataDecesso" />
+    <mat-datepicker-toggle matIconSuffix [for]="datepicker2"></mat-datepicker-toggle>
+    <mat-datepicker #datepicker2>
+      <mat-datepicker-actions>
+        <button mat-button matDatepickerCancel>Cancel</button>
+        <button mat-raised-button color="primary" matDatepickerApply>
+          Apply
+        </button>
+      </mat-datepicker-actions>
+    </mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="larghezza" appearance="fill">
+    <mat-label>Sesso</mat-label>
+    <mat-select required name="sesso" formControlName="sesso">
+      <mat-option value="M">M</mat-option>
+      <mat-option value="F">F</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="!homeform.valid">
     Invia/Salva
   </button>
 </form>

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 
 @Component({
@@ -7,7 +7,7 @@ import { NgForm } from '@angular/forms';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'homeangular';
 
   persone = [
@@ -21,8 +21,25 @@ export class AppComponent {
   indirizzi = ["indirizzo", "viale forza roma"]
 
 
+  homeform!: FormGroup
+  maxDate: any = new Date();
+  minDate: any
+
   constructor() {
     this.pushaIndirizzi(this.persone, this.indirizzi);
+    console.log(this.minDate);
+  }
+
+
+  ngOnInit(): void {
+    this.homeform = new FormGroup({
+      nome: new FormControl(null, [Validators.required, Validators.maxLength(30), Validators.pattern('[a-zA-Z ]*')]),
+      cognome: new FormControl(null, [Validators.required, Validators.maxLength(50), Validators.pattern('[a-zA-Z ]*')]),
+      dataNascita: new FormControl(),
+      dataDecesso: new FormControl(null, Validators.min(this.maxDate)),
+      codiceFiscale: new FormControl(null, Validators.pattern("^[A-Z]{6}[0-9]{2}[A-Z]{1}[0-9]{2}([A-Z]{1}[0-9]{3})[A-Z]{1}$")),
+      sesso: new FormControl(null, Validators.required),
+    })
   }
 
 
@@ -33,9 +50,8 @@ export class AppComponent {
     console.log(arrOggetti)
   }
 
-
-  onSubmit(form: NgForm) {
-    console.log(form);
+  onSubmit() {
+    console.log(this.homeform);
   }
 
 
